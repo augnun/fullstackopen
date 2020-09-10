@@ -1,0 +1,2 @@
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+browser->server: JSON {"content":"alo pg","date":"2020-09-10T05:16:45.964Z"}
