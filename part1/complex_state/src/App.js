@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const History = (props) => {
+    if (props.allClicks.length === 0) {
+        return (
+            <div>
+                the app is used by pressing the buttons
+            </div>
+        )
+    }
+
+    return (
+        <div>
+            button press history: {props.allClicks.join(' ')}
+        </div>
+    )
+}
+
+const Button = (props) =>  (
+    <button onClick={props.handleClick}>
+        {props.text}
+    </button>
+)
+
+
+function App(props) {
+    const [value, setValue] = useState(10)
+
+    const setToValue = (newValue) = () => {
+        setValue(newValue)
+    }
+    return (
+        <div>
+         <div>
+        {left}
+        <Button handleClick={() => setToValue(1000)} text='thousand' />
+        <Button handleClick={() => setToValue(0)} text='reset' />
+        <Button handleClick={() => setToValue(value + 1)} text='increment' />
+        <Button onClick={handleRightClick} text='right' />
+        {right}
+        <History allClicks={allClicks} />
+        </div>
+        </div>
+    )
 }
 
 export default App;
